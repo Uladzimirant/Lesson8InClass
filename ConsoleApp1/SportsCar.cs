@@ -19,31 +19,9 @@
 
 namespace ConsoleApp1
 {
-    public class Program
+    public class SportsCar : Car
     {
-        public static void Main(string[] args)
-        {
-            var car = new SportsCar(0, 8);
-            car.Drive(1);
-            do
-            {
-                try
-                {
-                    Console.WriteLine("Enter amount of fuel to refuel");
-                    car.Refuel(Convert.ToInt32(Console.ReadLine()));
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Enter a number");
-                }
-                catch (ArgumentException)
-                {
-                    Console.WriteLine("Enter positive amount");
-                };
-            } while (true);
-            car.Drive(3);
-        }
+        public SportsCar(int fuel, int consumption) : base(fuel, consumption) {}
     }
 
 }

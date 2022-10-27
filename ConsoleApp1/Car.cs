@@ -19,30 +19,38 @@
 
 namespace ConsoleApp1
 {
-    public class Program
+    public abstract class Car : IVehicle
     {
-        public static void Main(string[] args)
+        public int Fuel { get; protected set; }
+        public int Consumption { get; protected set; }
+        public Car(int fuel, int consumption) 
         {
-            var car = new SportsCar(0, 8);
-            car.Drive(1);
-            do
+            if (fuel < 0) throw new ArgumentException($"Fuel ({fuel}) must be positive");
+            Fuel = fuel;
+            Consumption = consumption;
+        }
+
+        public void Drive(int length)
+        {
+            if (Fuel >= Consumption * length)
             {
-                try
-                {
-                    Console.WriteLine("Enter amount of fuel to refuel");
-                    car.Refuel(Convert.ToInt32(Console.ReadLine()));
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Enter a number");
-                }
-                catch (ArgumentException)
-                {
-                    Console.WriteLine("Enter positive amount");
-                };
-            } while (true);
-            car.Drive(3);
+                Console.WriteLine("I'm driving");
+            }
+            if (Fuel > 0)
+            {
+                Console.WriteLine("I'm driving but fuel ended");
+            } else
+            {
+                Console.WriteLine("No fuel");
+            }
+            Fuel = Math.Max(Fuel - Consumption * length, 0);
+        }
+
+        public bool Refuel(int amount)
+        {
+            if (amount < 0) throw new ArgumentException($"Amount ({amount}) must be positive");
+            Fuel += amount;
+            return true;
         }
     }
 
