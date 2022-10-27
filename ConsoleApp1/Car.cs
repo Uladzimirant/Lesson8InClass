@@ -36,7 +36,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("I'm driving");
             }
-            if (Fuel > 0)
+            else if (Fuel > 0)
             {
                 Console.WriteLine("I'm driving but fuel ended");
             } else
