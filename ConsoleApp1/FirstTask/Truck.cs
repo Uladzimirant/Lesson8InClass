@@ -17,41 +17,11 @@
 и запросите у пользователя количество бензина для заправки, в завершение выполните метод Drive автомобиля.
  */
 
-namespace ConsoleApp1
+namespace ConsoleApp1.FirstTask
 {
-    public abstract class Car : IVehicle
+    public class Truck : Car
     {
-        public int Fuel { get; protected set; }
-        public int Consumption { get; protected set; }
-        public Car(int fuel, int consumption) 
-        {
-            if (fuel < 0) throw new ArgumentException($"Fuel ({fuel}) must be positive");
-            Fuel = fuel;
-            Consumption = consumption;
-        }
-
-        public void Drive(int length)
-        {
-            if (Fuel >= Consumption * length)
-            {
-                Console.WriteLine("I'm driving");
-            }
-            else if (Fuel > 0)
-            {
-                Console.WriteLine("I'm driving but fuel ended");
-            } else
-            {
-                Console.WriteLine("No fuel");
-            }
-            Fuel = Math.Max(Fuel - Consumption * length, 0);
-        }
-
-        public bool Refuel(int amount)
-        {
-            if (amount < 0) throw new ArgumentException($"Amount ({amount}) must be positive");
-            Fuel += amount;
-            return true;
-        }
+        public Truck(int fuel, int consumption) : base(fuel, consumption) {}
     }
 
 }

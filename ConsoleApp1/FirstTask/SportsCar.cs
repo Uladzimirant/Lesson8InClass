@@ -17,11 +17,11 @@
 и запросите у пользователя количество бензина для заправки, в завершение выполните метод Drive автомобиля.
  */
 
-namespace ConsoleApp1
+namespace ConsoleApp1.FirstTask
 {
-    public class Truck : Car
+    public class SportsCar : Car
     {
-        public Truck(int fuel, int consumption) : base(fuel, consumption) {}
+        public SportsCar(int fuel, int consumption) : base(fuel, consumption) {}
     }
 
 }
